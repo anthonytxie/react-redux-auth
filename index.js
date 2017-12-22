@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const bodyParser = require("body-parser");
@@ -8,6 +9,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 mongoose.connect("mongodb://localhost:auth/auth");
+mongoose.Promise = global.Promise;
 
 app.use(morgan("combined"));
 app.use(bodyParser.json({ type: "*/*" }));
